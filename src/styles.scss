@@ -216,6 +216,7 @@ a {
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 3;
 
     // border: 3px solid #2d2e32;
     border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
@@ -238,6 +239,7 @@ a {
     font-size: 55px;
     top: 0;
     right: 0;
+    z-index: 3;
 }
 
 // Projects
@@ -283,11 +285,13 @@ a {
 // Header
 .header-nav {
     transition: left .3s;
+    z-index: 999;
 }
 
 .header-nav-ul {
     display: flex;
     flex-direction: row;
+    z-index: 999;
 
     li {
         font-size: 1.25rem;
@@ -309,7 +313,7 @@ a {
         justify-content: space-between;
         
         position: fixed;
-        z-index: 999;
+        z-index: 9999;
 
         top: 0;
         left: 100vw;
@@ -324,6 +328,7 @@ a {
 
         &.active {
             left: 0;
+            z-index: 9999;
         }
     }
 
@@ -331,7 +336,8 @@ a {
         display: flex;
         flex-direction: column;
         padding-bottom: 2rem;
-    
+        z-index: 999;
+
         li {
             font-size: 2rem;
             margin-bottom: .75rem;
