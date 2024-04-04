@@ -1,1 +1,359 @@
-/* You can add global styles to this file, and also import other style files */
+// CSS Reset
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+// Variables
+$app-background: whitesmoke;
+$app-background-2: #FFFFFF;
+
+$primary-text: #232325;
+$secundary-text: #57575c;
+$clear-text: #dadae4;
+$link-text: #0d6efd;
+
+body {
+    background-color: $app-background;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+// Fonts
+// .jetbrains-mono {
+//     font-family: "JetBrains Mono", monospace;
+//     font-optical-sizing: auto;
+//     font-style: normal;
+// }
+
+.poppins {
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.italic {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 3.4375rem;
+    line-height: 4.125rem;
+}
+
+h2 {
+    font-size: 2.8125rem;
+    line-height: 3.375rem;
+}
+
+h3 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+}
+
+h4 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+}
+
+h5 {
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+}
+
+h6 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.font-s-1-2 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+}
+
+.caption {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+a {
+    color: $link-text;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.quote {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+@media screen and (max-width: 992px) {
+    .quote {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+.sub-hero {
+    max-width: 430px;
+}
+
+.quote-max {
+    max-width: 620px;
+}
+
+.letter-s-1 {
+    letter-spacing: .05em;
+}
+
+// Colors
+.primary-text {
+    color: $primary-text;
+}
+
+.secundary-text {
+    color: $secundary-text;
+}
+
+.clear-text {
+    color: $clear-text;
+}
+
+.link-text {
+    color: $link-text;
+}
+
+.hover-1 {
+    background: linear-gradient(#0d6efd 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+    transition: .4s, background-position 0s;
+}
+
+.hover-1:hover {
+    --p: 100%;
+    color: #fff;
+}
+
+// Background
+.bg-1 {
+    background-color: $app-background;
+}
+
+.bg-2 {
+    background-color: $app-background-2;
+}
+
+// Main Section
+.profile-img {
+    -webkit-animation: morph 8s ease-in-out infinite;
+    animation: morph 8s ease-in-out infinite;
+
+    background-image: url("./assets/img/profile.jpg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // border: 3px solid #2d2e32;
+    border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
+    position: relative;
+    
+    height: 22rem;
+    width: 22rem;
+    
+    transition: all .7s ease-in-out;
+    
+    &:hover {
+        border-radius: 50% 50% 40% 60% / 50% 50% 50% 50% !important; 
+    }
+}
+
+.hand-shake {
+    -webkit-animation: hand-shake 6s ease-in-out infinite;
+    animation: hand-shake 6s ease-in-out infinite;
+
+    font-size: 55px;
+    top: 0;
+    right: 0;
+}
+
+// Projects
+.project-container {
+    overflow: hidden;
+    border-radius: .5rem;
+    border: 1px solid $clear-text;
+
+    position: relative;
+
+    max-width: 500px;
+}
+
+// Keyframes
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: .4s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hand-shake {
+    0% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(30deg);
+    }
+}
+
+// Header
+.header-nav {
+    transition: left .3s;
+}
+
+.header-nav-ul {
+    display: flex;
+    flex-direction: row;
+
+    li {
+        font-size: 1.25rem;
+
+        a {
+            color: $primary-text;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        position: fixed;
+        z-index: 999;
+
+        top: 0;
+        left: 100vw;
+
+        height: 100vh;
+        height: 100dvh;
+        width: 100vw;
+
+        padding: 1.5rem;
+
+        background-color: $app-background;
+
+        &.active {
+            left: 0;
+        }
+    }
+
+    .header-nav-ul {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+    
+        li {
+            font-size: 2rem;
+            margin-bottom: .75rem;
+
+    
+            a {
+                color: $primary-text;
+    
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.get-up-btn {
+    border: none;
+    border-radius: 50px;
+    background-color: $app-background-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .8rem;
+}
