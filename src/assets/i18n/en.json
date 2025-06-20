@@ -1,0 +1,49 @@
+{
+    "CV_DOC": "/assets/CVeng.pdf",
+    "DOWNLOAD_CV": "Download CV",
+    "QUOTE": "At a certain moment, the dev should stop talking about responsivity to start talking about responsability",
+    "HEADER": {
+        "ABOUT": "About",
+        "PORTFOLIO": "Portfolio",
+        "CONTACT": "Contact",
+        "OPEN_MENU": "Open Menu",
+        "CHANGE_THEME": "Toggle theme",
+        "CHANGE_LANG": "Change language"
+    },
+    "FOOTER": {
+        "RESERVED": "All rights reserved",
+        "GET_UP": "Scroll to top"
+    },
+    "MAIN": {
+        "TITLE": "Frontend Web Developer",
+        "SUBTITLE": "Hi, I am Renan Lucena. A Web Developer from São Paulo, Brazil 📍",
+        "TECHNOLOGIES": "Technologies"
+    },
+    "PROJECTS": {
+        "TITLE": "Portfolio",
+        "SUBTITLE": "Each project has a little piece of my knowledge 🧩",
+        "OPEN": "Open",
+        "THINKSUS": {
+            "TITLE": "ThinkSus 🍃",
+            "SUBTITLE": "Complete business planning platform for ESG and carbon emissions. End-to-end internationalization and management of payments and plans."
+        },
+        "CRISTAOZINHO": {
+            "TITLE": "Cristãozinho 👼",
+            "SUBTITLE": "Website with plenty of advanced animations for the famous Turma do Cristãozinho cartoon. Visit and experience the smoothness for yourself."
+        },
+        "RURAGIL": {
+            "TITLE": "Rurágil 🐇",
+            "SUBTITLE": "Web app developed for documentation, payment, and officialization of land, farm, and machinery transactions in the rural sector, featuring a back office."
+        },
+        "NUTRICHAT": {
+            "TITLE": "Nutrichat 🦾",
+            "SUBTITLE": "Landing page showcasing a new chatbot trained not only by developers, but also by renowned nutritionists."
+        }
+    },
+    "CONTACT": {
+        "TITLE": "Contact",
+        "SUBTITLE": "Need me? Get in touch with me 👇",
+        "EMAIL": "Email",
+        "PHONE": "Phone"
+    }
+}

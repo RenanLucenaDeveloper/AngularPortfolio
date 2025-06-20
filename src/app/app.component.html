@@ -1,74 +1,105 @@
-<header class="w-100 d-flex align-items-center justify-content-between pt-3 pt-md-4 pb-5 px-3 px-md-4">
-  <h5 class="poppins fw-700 primary-text">Renan L.</h5>
+<header 
+  class="w-100 d-flex align-items-center justify-content-between px-3 px-md-5"
+  [class.scrolled]="scrolled">
+  <a href="#main" class="text-decoration-none cursor-pointer">
+    <h5 class="poppins fw-700 primary-text">Renan L.</h5>
+  </a>
 
-  <button class="d-block d-md-none border-0 bg-transparent shadow-none" (click)="toggleMobileMenu()">
-    <img src="/assets/icons/menu.svg" alt="Abrir menu" width="40px">
-  </button>
+  <form [formGroup]="headerForm" class="d-flex align-items-center justify-content-end gap-2">
+    <button class="primary-text bg-transparent pe-3 border-0 shadow-none" (click)="toggleTheme()" [title]="'HEADER.CHANGE_THEME' | translate">
+      <ng-container *ngIf="actualTheme === 'light-theme' else darkThemeIcon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>
+      </ng-container>
+      
+      <ng-template #darkThemeIcon>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+      </ng-template>
+    </button>
 
-  <nav class="header-nav" [class.active]="activeMobileMenu">
-    <div class="d-flex align-items-center justify-content-between w-100 d-md-none">
-      <h5 class="poppins fw-700 primary-text">Renan L.</h5>
+    <label for="lang" class="select-container primary-text" [title]="'HEADER.CHANGE_LANG' | translate">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T484-720H40v-80h280v-80h80v80h280v80H564q-21 72-63 148t-83 116l96 98-30 82-122-125-202 201Zm468-72h144l-72-204-72 204Z"/></svg>
+      <select class="ps-1" formControlName="lang" id="lang" name="lang">
+        <option value="en">English</option>
+        <option value="pt">Português (Brasil)</option>
+      </select>
+    </label>
 
-      <button class="border-0 shadow-none bg-transparent" (click)="toggleMobileMenu()">
-        <img src="/assets/icons/close.svg" alt="Fechar" width="40px">
-      </button>
-    </div>
+    <button type="button" class="primary-text d-block d-md-none border-0 bg-transparent shadow-none" [title]="'HEADER.OPEN_MENU' | translate" (click)="toggleMobileMenu()">
+      <svg width="40" height="23" viewBox="0 0 40 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12" y="20" width="28" height="3" rx="1.5" fill="currentColor"/>
+        <rect y="10" width="40" height="3" rx="1.5" fill="currentColor"/>
+        <rect x="5" width="35" height="3" rx="1.5" fill="currentColor"/>
+      </svg>
+    </button>
 
-    <ul class="header-nav-ul pt-5 pt-md-0">
-      <li class="fw-500 poppins">
-        <a href="#main" class="cursor-pointer hover-1 px-3" (click)="toggleMobileMenu()">
-          Sobre
+    <nav class="header-nav" [class.active]="activeMobileMenu">
+      <div class="d-flex align-items-center justify-content-between w-100 d-md-none">
+        <h5 class="poppins fw-700 primary-text">Renan L.</h5>
+
+        <button title="fechar" class="primary-text border-0 shadow-none bg-transparent" (click)="toggleMobileMenu()">
+          <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="header-nav-ul pt-5 pt-md-0">
+        <li class="fw-500 poppins">
+          <a href="#main" class="cursor-pointer hover-1 px-3" (click)="toggleMobileMenu()">
+            {{ "HEADER.ABOUT" | translate }}
+          </a>
+        </li>
+        <li class="fw-500 poppins">
+          <a href="#portfolio" class="cursor-pointer hover-1 px-3" (click)="toggleMobileMenu()">
+            {{ "HEADER.PORTFOLIO" | translate }}
+          </a>
+        </li>
+        <li class="fw-500 poppins">
+          <a href="#contato" class="cursor-pointer hover-1 px-3" (click)="toggleMobileMenu()">
+            {{ "HEADER.CONTACT" | translate }}
+          </a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center justify-content-start gap-3 pt-3 pe-0 pe-md-4 d-md-none">
+        <!-- Linkedin -->
+        <a aria-label="linkedin" title="Linkedin" rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/renan-lucena-811491214/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-brand-linkedin">
+            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+            <path d="M8 11l0 5"></path>
+            <path d="M8 8l0 .01"></path>
+            <path d="M12 16l0 -5"></path>
+            <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+          </svg>
         </a>
-      </li>
-      <li class="fw-500 poppins">
-        <a href="#portfolio" class="cursor-pointer hover-1 px-3" (click)="toggleMobileMenu()">
-          Portfólio
+        <!-- Github -->
+        <a aria-label="github" title="Github" rel="noreferrer" target="_blank" href="https://github.com/RenanLucenaDeveloper">
+          <svg
+            xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-brand-github">
+            <path
+              d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
+            </path>
+          </svg>
         </a>
-      </li>
-      <li class="fw-500 poppins">
-        <a href="#contato" class="cursor-pointer hover-1 px-3" (click)="toggleMobileMenu()">
-          Contato
-        </a>
-      </li>
-    </ul>
-
-    <div class="d-flex align-items-center justify-content-start gap-3 pt-3 pe-0 pe-md-4 d-md-none">
-      <!-- Linkedin -->
-      <a aria-label="linkedin" title="Linkedin" rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/renan-lucena-811491214/">
-        <svg
-          xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-brand-linkedin">
-          <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-          <path d="M8 11l0 5"></path>
-          <path d="M8 8l0 .01"></path>
-          <path d="M12 16l0 -5"></path>
-          <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
-        </svg>
-      </a>
-      <!-- Github -->
-      <a aria-label="github" title="Github" rel="noreferrer" target="_blank" href="https://github.com/RenanLucenaDeveloper">
-        <svg
-          xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-brand-github">
-          <path
-            d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
-          </path>
-        </svg>
-      </a>
-    </div>
-  </nav>
+      </div>
+    </nav>
+  </form>
 </header>
 
 <!-- Main Section / Hero -->
 <section id="main" class="fade-in container py-5">
+  <div class="w-100 d-block" style="height: 102px;"></div>
   <div class="row justify-content-center align-items-center flex-column-reverse flex-lg-row">
     <!-- Info -->
-    <div class="col-12 col-lg-6 col-xl-5 col-xxl-4 d-flex flex-column justify-content-end align-items-start pt-5 pt-lg-0">
+    <div class="col-12 col-lg-6 col-xl-5 col-xxl-4 d-flex flex-column justify-content-end align-items-center align-items-md-start pt-5 pt-lg-0">
       <h1 class="poppins fw-700 primary-text text-center text-lg-start">
-        Programador Frontend Web
+        {{ "MAIN.TITLE" | translate }}
       </h1>
       <p class="poppins sub-hero pt-3 primary-text fw-400 text-center text-lg-start w-100 d-block mx-auto ms-lg-0">
-        Olá, me chamo Renan Lucena. Desenvolvedor web de São Bernardo do Campo, SP 📍
+        {{ "MAIN.SUBTITLE" | translate }}
       </p>
 
       <div class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 gap-3 pt-3">
@@ -94,6 +125,10 @@
             </path>
           </svg>
         </a>
+        <!-- CV -->
+        <button aria-label="Baixar CV" [title]="'DOWNLOAD_CV' | translate" (click)="downloadCV()" class="p-0 border-0 bg-transparent shadow-none link-text">
+          <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+        </button>
       </div>
     </div>
 
@@ -107,8 +142,8 @@
 
   <div class="row justify-content-center pt-5 pt-lg-0 pt-xl-4 pb-5">
     <div class="col-xl-9 col-xxl-8 d-flex flex-column flex-lg-row align-items-center justify-content-start gap-4">
-      <p class="poppins fw-600">Tecnologias</p>
-      <p class="poppins fw-500 me-3 d-none d-lg-inline-block">|</p>
+      <p class="poppins fw-600 primary-text">{{ "MAIN.TECHNOLOGIES" | translate }}</p>
+      <p class="poppins fw-500 me-3 d-none d-lg-inline-block primary-text">|</p>
       <ul class="d-flex align-items-center justify-content-start gap-3">
         <li>
           <img src="/assets/icons/html5.svg" alt="HTML5" width="40px" title="HTML5">
@@ -140,10 +175,10 @@
       <div class="col-12 col-xl-9 col-xxl-8">
         <div class="px-3 px-lg-0">
           <p class="poppins letter-s-1 fw-700 d-block link-text text-uppercase">
-            Portfólio
+            {{ "PROJECTS.TITLE" | translate }}
           </p>
           <h5 class="poppins pt-3 fw-700 primary-text d-block pb-4">
-            Cada projeto compõe um pedaçinho do meu conhecimento 🧩
+            {{ "PROJECTS.SUBTITLE" | translate }}
           </h5>
   
           <!-- ThinkSus -->
@@ -151,11 +186,11 @@
             <div class="d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between gap-4">  
               <!-- Info -->
               <div class="d-flex flex-column gap-4" style="max-width: 320px;">
-                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase">
-                  ThinkSus 🍃
+                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase letter-spacing-25">
+                  {{ "PROJECTS.THINKSUS.TITLE" | translate }}
                 </p>
                 <p class="poppins fw-400 secundary-text w-100 text-center caption">
-                  Plataforma completa de planejamento empresarial para ESG e emissão de carbono. Internacionalização de ponta a ponta e gerenciamente de planos e pagamentos
+                  {{ "PROJECTS.THINKSUS.SUBTITLE" | translate }}
                 </p>
 
                 <div class="d-flex w-100 align-items-center justify-content-center gap-3">
@@ -166,12 +201,12 @@
                 <div class="d-flex w-100 align-items-center justify-content-center gap-4 pt-4">
                   <a href="https://github.com/RenanLucenaDeveloper" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
                     Repo
-                    <img src="/assets/icons/github.svg" width="23px"/>
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(1.4)" fill="currentColor"/></svg>
                   </a>
 
                   <a href="https://thinksus.com/home" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
-                    Abrir
-                    <img src="/assets/icons/open.svg" width="20px"/>
+                    {{ "PROJECTS.OPEN" | translate }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><g><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" transform="scale(.17)" d="M110.6,72.58c0-3.19,2.59-5.78,5.78-5.78c3.19,0,5.78,2.59,5.78,5.78v33.19c0,4.71-1.92,8.99-5.02,12.09 c-3.1,3.1-7.38,5.02-12.09,5.02H17.11c-4.71,0-8.99-1.92-12.09-5.02c-3.1-3.1-5.02-7.38-5.02-12.09V17.19 C0,12.48,1.92,8.2,5.02,5.1C8.12,2,12.4,0.08,17.11,0.08h32.98c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78H17.11 c-1.52,0-2.9,0.63-3.91,1.63c-1.01,1.01-1.63,2.39-1.63,3.91v88.58c0,1.52,0.63,2.9,1.63,3.91c1.01,1.01,2.39,1.63,3.91,1.63h87.95 c1.52,0,2.9-0.63,3.91-1.63s1.63-2.39,1.63-3.91V72.58L110.6,72.58z M112.42,17.46L54.01,76.6c-2.23,2.27-5.89,2.3-8.16,0.07 c-2.27-2.23-2.3-5.89-0.07-8.16l56.16-56.87H78.56c-3.19,0-5.78-2.59-5.78-5.78c0-3.19,2.59-5.78,5.78-5.78h26.5 c5.12,0,11.72-0.87,15.65,3.1c2.48,2.51,1.93,22.52,1.61,34.11c-0.08,3-0.15,5.29-0.15,6.93c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78c0-0.31,0.08-3.32,0.19-7.24C110.96,30.94,111.93,22.94,112.42,17.46L112.42,17.46z"/></g></svg>
                   </a>
                 </div>
               </div>
@@ -193,11 +228,11 @@
 
               <!-- Info -->
               <div class="d-flex flex-column gap-4" style="max-width: 320px;">
-                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase">
-                  Cristãozinho 👼
+                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase letter-spacing-25">
+                  {{ "PROJECTS.CRISTAOZINHO.TITLE" | translate }}
                 </p>
                 <p class="poppins fw-400 secundary-text w-100 text-center caption">
-                  Website com bastante animações avançadas para o famoso desenho da Turma do Cristãozinho. Entre e teste a fluidez por conta própria
+                  {{ "PROJECTS.CRISTAOZINHO.SUBTITLE" | translate }}
                 </p>
 
                 <div class="d-flex w-100 align-items-center justify-content-center gap-3">
@@ -208,12 +243,12 @@
                 <div class="d-flex w-100 align-items-center justify-content-center gap-4 pt-4">
                   <a href="https://github.com/RenanLucenaDeveloper" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
                     Repo
-                    <img src="/assets/icons/github.svg" width="23px"/>
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(1.4)" fill="currentColor"/></svg>
                   </a>
 
                   <a href="https://cristaozinho-landing-page.vercel.app/" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
-                    Abrir
-                    <img src="/assets/icons/open.svg" width="20px"/>
+                    {{ "PROJECTS.OPEN" | translate }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><g><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" transform="scale(.17)" d="M110.6,72.58c0-3.19,2.59-5.78,5.78-5.78c3.19,0,5.78,2.59,5.78,5.78v33.19c0,4.71-1.92,8.99-5.02,12.09 c-3.1,3.1-7.38,5.02-12.09,5.02H17.11c-4.71,0-8.99-1.92-12.09-5.02c-3.1-3.1-5.02-7.38-5.02-12.09V17.19 C0,12.48,1.92,8.2,5.02,5.1C8.12,2,12.4,0.08,17.11,0.08h32.98c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78H17.11 c-1.52,0-2.9,0.63-3.91,1.63c-1.01,1.01-1.63,2.39-1.63,3.91v88.58c0,1.52,0.63,2.9,1.63,3.91c1.01,1.01,2.39,1.63,3.91,1.63h87.95 c1.52,0,2.9-0.63,3.91-1.63s1.63-2.39,1.63-3.91V72.58L110.6,72.58z M112.42,17.46L54.01,76.6c-2.23,2.27-5.89,2.3-8.16,0.07 c-2.27-2.23-2.3-5.89-0.07-8.16l56.16-56.87H78.56c-3.19,0-5.78-2.59-5.78-5.78c0-3.19,2.59-5.78,5.78-5.78h26.5 c5.12,0,11.72-0.87,15.65,3.1c2.48,2.51,1.93,22.52,1.61,34.11c-0.08,3-0.15,5.29-0.15,6.93c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78c0-0.31,0.08-3.32,0.19-7.24C110.96,30.94,111.93,22.94,112.42,17.46L112.42,17.46z"/></g></svg>
                   </a>
                 </div>
               </div>
@@ -225,11 +260,11 @@
             <div class="d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between gap-4">  
               <!-- Info -->
               <div class="d-flex flex-column gap-4" style="max-width: 320px;">
-                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase">
-                  Rurágil 🐇
+                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase letter-spacing-25">
+                  {{ "PROJECTS.RURAGIL.TITLE" | translate }}
                 </p>
                 <p class="poppins fw-400 secundary-text w-100 text-center caption">
-                  Web App feito para a documentação, pagamento e oficialização da negociação de terrenos, fazendas e máquinas do âmbito rural, possui Backoffice
+                  {{ "PROJECTS.RURAGIL.SUBTITLE" | translate }}
                 </p>
 
                 <div class="d-flex w-100 align-items-center justify-content-center gap-3">
@@ -240,12 +275,12 @@
                 <div class="d-flex w-100 align-items-center justify-content-center gap-4 pt-4">
                   <a href="https://github.com/RenanLucenaDeveloper" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
                     Repo
-                    <img src="/assets/icons/github.svg" width="23px"/>
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(1.4)" fill="currentColor"/></svg>
                   </a>
 
                   <a href="https://ruragil-frontend.vercel.app/auth/splash" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
-                    Abrir
-                    <img src="/assets/icons/open.svg" width="20px"/>
+                    {{ "PROJECTS.OPEN" | translate }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><g><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" transform="scale(.17)" d="M110.6,72.58c0-3.19,2.59-5.78,5.78-5.78c3.19,0,5.78,2.59,5.78,5.78v33.19c0,4.71-1.92,8.99-5.02,12.09 c-3.1,3.1-7.38,5.02-12.09,5.02H17.11c-4.71,0-8.99-1.92-12.09-5.02c-3.1-3.1-5.02-7.38-5.02-12.09V17.19 C0,12.48,1.92,8.2,5.02,5.1C8.12,2,12.4,0.08,17.11,0.08h32.98c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78H17.11 c-1.52,0-2.9,0.63-3.91,1.63c-1.01,1.01-1.63,2.39-1.63,3.91v88.58c0,1.52,0.63,2.9,1.63,3.91c1.01,1.01,2.39,1.63,3.91,1.63h87.95 c1.52,0,2.9-0.63,3.91-1.63s1.63-2.39,1.63-3.91V72.58L110.6,72.58z M112.42,17.46L54.01,76.6c-2.23,2.27-5.89,2.3-8.16,0.07 c-2.27-2.23-2.3-5.89-0.07-8.16l56.16-56.87H78.56c-3.19,0-5.78-2.59-5.78-5.78c0-3.19,2.59-5.78,5.78-5.78h26.5 c5.12,0,11.72-0.87,15.65,3.1c2.48,2.51,1.93,22.52,1.61,34.11c-0.08,3-0.15,5.29-0.15,6.93c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78c0-0.31,0.08-3.32,0.19-7.24C110.96,30.94,111.93,22.94,112.42,17.46L112.42,17.46z"/></g></svg>
                   </a>
                 </div>
               </div>
@@ -267,11 +302,11 @@
 
               <!-- Info -->
               <div class="d-flex flex-column gap-4" style="max-width: 320px;">
-                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase">
-                  Nutrichat 🦾
+                <p class="poppins pt-3 fw-800 primary-text d-block w-100 text-center text-uppercase letter-spacing-25">
+                  {{ "PROJECTS.NUTRICHAT.TITLE" | translate }}
                 </p>
                 <p class="poppins fw-400 secundary-text w-100 text-center caption">
-                  Landing page para apresentação de um novo chatbot treinado não só por programadores, mas também por nutricionistas reconhecidos
+                  {{ "PROJECTS.NUTRICHAT.SUBTITLE" | translate }}
                 </p>
 
                 <div class="d-flex w-100 align-items-center justify-content-center gap-3">
@@ -282,12 +317,12 @@
                 <div class="d-flex w-100 align-items-center justify-content-center gap-4 pt-4">
                   <a href="https://github.com/RenanLucenaDeveloper" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
                     Repo
-                    <img src="/assets/icons/github.svg" width="23px"/>
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(1.4)" fill="currentColor"/></svg>
                   </a>
 
                   <a href="https://nutrichat-landing.vercel.app/" target="_blank" class="primary-text poppins caption fw-700 d-flex align-items-center gap-2">
-                    Abrir
-                    <img src="/assets/icons/open.svg" width="20px"/>
+                    {{ "PROJECTS.OPEN" | translate }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><g><path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" transform="scale(.17)" d="M110.6,72.58c0-3.19,2.59-5.78,5.78-5.78c3.19,0,5.78,2.59,5.78,5.78v33.19c0,4.71-1.92,8.99-5.02,12.09 c-3.1,3.1-7.38,5.02-12.09,5.02H17.11c-4.71,0-8.99-1.92-12.09-5.02c-3.1-3.1-5.02-7.38-5.02-12.09V17.19 C0,12.48,1.92,8.2,5.02,5.1C8.12,2,12.4,0.08,17.11,0.08h32.98c3.19,0,5.78,2.59,5.78,5.78c0,3.19-2.59,5.78-5.78,5.78H17.11 c-1.52,0-2.9,0.63-3.91,1.63c-1.01,1.01-1.63,2.39-1.63,3.91v88.58c0,1.52,0.63,2.9,1.63,3.91c1.01,1.01,2.39,1.63,3.91,1.63h87.95 c1.52,0,2.9-0.63,3.91-1.63s1.63-2.39,1.63-3.91V72.58L110.6,72.58z M112.42,17.46L54.01,76.6c-2.23,2.27-5.89,2.3-8.16,0.07 c-2.27-2.23-2.3-5.89-0.07-8.16l56.16-56.87H78.56c-3.19,0-5.78-2.59-5.78-5.78c0-3.19,2.59-5.78,5.78-5.78h26.5 c5.12,0,11.72-0.87,15.65,3.1c2.48,2.51,1.93,22.52,1.61,34.11c-0.08,3-0.15,5.29-0.15,6.93c0,3.19-2.59,5.78-5.78,5.78 c-3.19,0-5.78-2.59-5.78-5.78c0-0.31,0.08-3.32,0.19-7.24C110.96,30.94,111.93,22.94,112.42,17.46L112.42,17.46z"/></g></svg>
                   </a>
                 </div>
               </div>
@@ -306,17 +341,26 @@
       <div class="col-12 col-xl-9 col-xxl-8">
         <div class="px-3 px-lg-0">
           <p class="poppins letter-s-1 fw-700 d-block link-text text-uppercase">
-            Contato
+            {{ "CONTACT.TITLE" | translate }}
           </p>
           <h5 class="poppins pt-3 fw-700 primary-text d-block pb-5">
-            Precisando de mim? Entre em contato 👇
+            {{ "CONTACT.SUBTITLE" | translate }}
           </h5>
 
-          <h6 class="primary-text fw-600 font-s-1-2 mb-2">E-mail</h6>
-          <p class="secundary-text mb-4">Reenanluceena@gmail.com</p>
+          <h6 class="primary-text fw-600 font-s-1-2 mb-2">{{ "CONTACT.EMAIL" | translate }}</h6>
+          <p class="secundary-text mb-4">ReenanDeveloper&#64;hotmail.com</p>
           
-          <h6 class="primary-text fw-600 font-s-1-2 mb-2">Celular</h6>
-          <p class="secundary-text">(11) 96568-3640</p>
+          <h6 class="primary-text fw-600 font-s-1-2 mb-2">{{ "CONTACT.PHONE" | translate }}</h6>
+          <p class="secundary-text mb-2">(11) 96568-3640</p>
+
+          <button 
+            (click)="downloadCV()"
+            class="mt-4 px-3 py-2 d-flex align-items-center justify-content-center gap-2 outline-btn" 
+            [title]="'DOWNLOAD_CV' | translate">
+            {{ "DOWNLOAD_CV" | translate }}
+            
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -328,7 +372,7 @@
   <div class="container py-5">
     <div class="row py-5">
       <div class="col">
-        <p class="poppins fw-400 italic quote quote-max text-center w-100 px-2 primary-text d-block mx-auto">"Em um determinado momento, o dev tem que parar de falar em responsividade para falar de responsabilidade"</p>
+        <p class="poppins fw-400 italic quote quote-max text-center w-100 px-2 primary-text d-block mx-auto">"{{ "QUOTE" | translate }}"</p>
         <p class="poppins fw-600 quote-max text-end px-2 d-block w-100 primary-text  d-block mx-auto mt-3">Renan Lucena</p>
       </div>
     </div>
@@ -336,7 +380,7 @@
 </section>
 
 <footer class="fade-in py-5 px-3 px-md-5 d-flex flex-column flex-md-row align-items-center justify-content-between w-100 gap-3">
-  <p class="flex-grow-1">Todos os direitos reservados &copy;</p>
+  <p class="flex-grow-1 primary-text">{{ "FOOTER.RESERVED" | translate }} &copy;</p>
 
   <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3 pt-3 pe-0 pe-md-4">
     <!-- Linkedin -->
@@ -361,11 +405,16 @@
         </path>
       </svg>
     </a>
+
+    <!-- CV -->
+    <button [title]="'DOWNLOAD_CV' | translate" (click)="downloadCV()" class="p-0 border-0 shadow-none bg-transparent link-text">
+      <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+    </button>
   </div>
 
   <div class="flex-grow-1 d-flex align-items-center justify-content-end mt-3 mt-lg-0">
-    <button class="get-up-btn" (click)="scrollToTop()">
-      <img src="/assets/icons/up.svg" alt="Subir" width="22px">
+    <button class="get-up-btn primary-text" [title]="'FOOTER.GET_UP' | translate" (click)="scrollToTop()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="6 10 12 4 18 10"/></svg>
     </button>
   </div>
 </footer>

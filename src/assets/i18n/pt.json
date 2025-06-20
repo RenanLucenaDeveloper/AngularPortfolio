@@ -1,0 +1,49 @@
+{
+    "CV_DOC": "/assets/CVptbr.pdf",
+    "DOWNLOAD_CV": "Baixar CV",
+    "QUOTE": "Em um determinado momento, o dev tem que parar de falar em responsividade para falar de responsabilidade",
+    "HEADER": {
+        "ABOUT": "Sobre",
+        "PORTFOLIO": "Portfólio",
+        "CONTACT": "Contato",
+        "OPEN_MENU": "Abrir menu",
+        "CHANGE_THEME": "Alterar tema",
+        "CHANGE_LANG": "Alterar linguagem"
+    },
+    "FOOTER": {
+        "RESERVED": "Todos os direitos reservados",
+        "GET_UP": "Subir"
+    },
+    "MAIN": {
+        "TITLE": "Programador Frontend Web",
+        "SUBTITLE": "Olá, me chamo Renan Lucena. Desenvolvedor web de São Bernardo do Campo, SP 📍",
+        "TECHNOLOGIES": "Tecnologias"
+    },
+    "PROJECTS": {
+        "TITLE": "Portfólio",
+        "SUBTITLE": "Cada projeto compõe um pedaçinho do meu conhecimento 🧩",
+        "OPEN": "Abrir",
+        "THINKSUS": {
+            "TITLE": "ThinkSus 🍃",
+            "SUBTITLE": "Plataforma completa de planejamento empresarial para ESG e emissão de carbono. Internacionalização de ponta a ponta e gerenciamente de planos e pagamentos"
+        },
+        "CRISTAOZINHO": {
+            "TITLE": "Cristãozinho 👼",
+            "SUBTITLE": "Website com bastante animações avançadas para o famoso desenho da Turma do Cristãozinho. Entre e teste a fluidez por conta própria"
+        },
+        "RURAGIL": {
+            "TITLE": "Rurágil 🐇",
+            "SUBTITLE": "Web App feito para a documentação, pagamento e oficialização da negociação de terrenos, fazendas e máquinas do âmbito rural, possui Backoffice"
+        },
+        "NUTRICHAT": {
+            "TITLE": "Nutrichat 🦾",
+            "SUBTITLE": "Landing page para apresentação de um novo chatbot treinado não só por programadores, mas também por nutricionistas reconhecidos"
+        }
+    },
+    "CONTACT": {
+        "TITLE": "Contato",
+        "SUBTITLE": "Precisando de mim? Entre em contato 👇",
+        "EMAIL": "E-mail",
+        "PHONE": "Celular"
+    }
+}
